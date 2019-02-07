@@ -1,16 +1,17 @@
 import express = require("express")
 import {Request, Response, NextFunction} from "express"
+import { UsuarioController } from "../api/controllers/usuario.controller";
 
 const Router = express.Router()
 
-Router.get("/", (req: Request, res: Response, next: NextFunction) => {
-  res
-    .json([
-      {id: 1, nombre: "Alfonso"},
-      {id: 2, nombre: "Javier"},
-      {id: 3, nombre: "Kelly"},
-      {id: 4, nombre: "Jana"}
-    ])
-})
+const controlador = new UsuarioController()
+
+console.log("usuario.route")
+
+Router.get("/", controlador.listar)
+Router.get("/:id", controlador.detallar)
+Router.post("/", controlador.insertar)
+Router.put("/:id", controlador.modificar)
+Router.delete("/:id", controlador.eliminar)
 
 export {Router}
