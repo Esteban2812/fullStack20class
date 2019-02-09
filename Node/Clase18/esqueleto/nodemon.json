@@ -1,7 +1,7 @@
 {
   "watch":[
-    "server.ts"
+    "server2.ts"
   ],
   "ext": "ts",
-  "exec": "ts-node server"
+  "exec": "ts-node server2"
 }
