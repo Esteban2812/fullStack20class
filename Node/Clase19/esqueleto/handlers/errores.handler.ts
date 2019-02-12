@@ -16,7 +16,18 @@ const handlerErrors = {
         message: error.message,
         stack: error.stack
       })
-  }
+  },
+  cacheo(ftn: (req: Request,res: Response,next:NextFunction)=>Promise<any>){
+    return (rq: Request, rs: Response, nx:NextFunction)=>{
+        return ftn(rq,rs,nx).catch(
+            (error:IError) => {
+               error.status = 500
+               nx(error)
+               })
+    }
+   }
+
+
 }
 
 export {handlerErrors}

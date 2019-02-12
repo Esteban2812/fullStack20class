@@ -3,18 +3,24 @@ import express = require("express")
 import {Request, Response, NextFunction} from "express"
 import {Router as routerIndex} from "./routes/index.route"
 import {Router as routerUsuario} from "./routes/usuario.route"
+import {Router as routerRol} from "./routes/rol.route"
 import { handlerErrors } from "./handlers/errores.handler";
+import bodyParser = require("body-parser")
 
 import mongoose = require("mongoose")
 // Declaraciones
 const app = express()
 
+
+app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyParser.json())
 // Archivos estáticos
 //app.use(express.static("./public"))
 
 // Rutas
 app.use("/", routerIndex)
 app.use("/usuario", routerUsuario)
+app.use("/rol", routerRol)
 
 //coneccon a BD
 mongoose.Promise = global.Promise
