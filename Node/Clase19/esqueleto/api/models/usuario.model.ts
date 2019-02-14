@@ -23,7 +23,17 @@ contrasena: {
     required:true,
     trim: true,
     minlength: 8
+},
+rol: {
+    type: mongoose.Schema.ObjectId,
+    ref: "Rol",
+    required: true
+  },
+refreshToken: {
+    type:String,
+    required:true
 }
+
 }
 )
 
