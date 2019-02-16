@@ -32,7 +32,10 @@ rol: {
 refreshToken: {
     type:String,
     required:true
-}
+},
+
+foto:{
+    type:String}
 
 }
 )

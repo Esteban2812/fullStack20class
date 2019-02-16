@@ -13,7 +13,7 @@ console.log("usuario.route")
 
 Router.get("/", authentication, autorizacion("admin","operador"), controlador.listar)
 Router.get("/:id", controlador.detallar)
-Router.post("/", controlador.insertar)
+Router.post("/", handlerImages.upload(),handlerImages.save(),handlerErrors.cacheo(controlador.insertar))
 Router.put("/:id", controlador.modificar)
 Router.delete("/:id", controlador.eliminar)
 Router.post("/login", handlerErrors.cacheo(controlador.login))
